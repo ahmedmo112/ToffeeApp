@@ -2,6 +2,6 @@ import java.util.ArrayList;
 
 public interface ICategoryView {
     ArrayList<Category> viewCategories();
-    void ViewCategoryItems(Category category);
-    void AddCategory(int id,String name);
+    ArrayList<Product> viewCategoryItems(int categoryID);
+    void addCategory(int id,String name);
 }

@@ -1,8 +1,12 @@
+import java.security.GeneralSecurityException;
+
 public class Payment implements IPayment {
 
     private int amount;
     private int transactionId;
     private String date;
+    private String paymentMethod;
+
 
 
     @Override
@@ -29,6 +33,14 @@ public class Payment implements IPayment {
     @Override
     public String getDate() {
         return date;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod){
+        this.paymentMethod = paymentMethod;
     }
     
 }

@@ -7,6 +7,7 @@ public class Product {
     private String description;
     private int avaliablequantity;
     private int loyaltyPoints;
+    private int categoryID;
 
     public void setId(int id){
         this.id = id;
@@ -23,7 +24,7 @@ public class Product {
     public void setPrice(int price){
         this.price = price;
     }
-    public int getprice(){
+    public int getPrice(){
         return price;
     }
     public void setBrand(String brand){
@@ -56,6 +57,13 @@ public class Product {
     public int getLoyaltyPoints(){
         return loyaltyPoints;
     }
+    public void setCategoryID(int categoryID){
+        this.categoryID = categoryID;
+    }
+    public int getCategoryID(){
+        return categoryID;
+    }
+    
     Product(int id, String name, String brand, int price, String image, String desc, int avaliablequantity, Category category){
 
     }

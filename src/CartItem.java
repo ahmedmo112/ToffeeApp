@@ -3,6 +3,12 @@ public class CartItem implements ICartItem {
     private Product product;
     private double price;
 
+    public CartItem(Product product, int quantity) {
+        this.product = product;
+        this.quantity = quantity;
+        this.price = product.getPrice() * quantity;
+    }
+
     @Override
     public Product getProduct() {
         return product;

@@ -6,4 +6,6 @@ public interface IPayment {
     void setAmount(int amount);
     int getTransactionId();
     String getDate();
+    String getPaymentMethod();
+    void setPaymentMethod(String paymentMethod);
 }

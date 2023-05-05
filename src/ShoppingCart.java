@@ -5,13 +5,13 @@ public  class ShoppingCart implements IShoppingCart {
     private ArrayList<ICartItem> items;
 
     @Override
-    public void AddItem(Product item) {
+    public void AddItem(Product item , int Quantity) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'AddItem'");
     }
 
     @Override
-    public void RemoveItem(int ProductID) {
+    public void RemoveItem(ICartItem item) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'RemoveItem'");
     }
@@ -68,6 +68,6 @@ public  class ShoppingCart implements IShoppingCart {
       return shippingFees;
     }
 
-   
+    
     
 }

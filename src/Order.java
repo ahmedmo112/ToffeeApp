@@ -8,10 +8,10 @@ public class Order {
     private OrderStatus status;
     private ArrayList<ICartItem> items;
 
-    public Order(int id, String shippedAdress, int totalPrice, ArrayList<ICartItem> items) {
+    public Order(int id,  int totalPrice, ArrayList<ICartItem> items) {
         this.id = id;
-        this.shippedAdress = shippedAdress;
         this.totalPrice = totalPrice;
+        this.items = items;
     }
 
     public void setPayment(IPayment payment) {
@@ -52,6 +52,11 @@ public class Order {
 
     public OrderStatus getStatus() {
         return this.status;
+    }
+
+    public boolean payOrder(IPayment payment){
+        this.payment.processPayment();
+        return true;
     }
 
 }
