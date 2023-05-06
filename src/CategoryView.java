@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CategoryView implements ICategoryView{
@@ -5,19 +7,28 @@ public class CategoryView implements ICategoryView{
 
     @Override
     public ArrayList<Category> viewCategories() {
-        ArrayList<Category> categories = new ArrayList<Category>();
-        categories.add(new Category(1, "Category 1"));
-        categories.add(new Category(2, "Category 2"));
-        categories.add(new Category(3, "Category 3"));
-        categories.add(new Category(4, "Category 4"));
-        categories.add(new Category(5, "Category 5"));
+        CategoryDBPersistence categoryDBPersistence = new CategoryDBPersistence();
+        try {
+            categories = categoryDBPersistence.getAllCategories();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return categories;
     }
 
     @Override
     public ArrayList<Product> viewCategoryItems(int categoryID) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ViewCategoryItems'");
+       ProductDBPresistence productDBPresistence = new ProductDBPresistence();
+       ArrayList<Product> products = new ArrayList<>();
+    
+        try {
+            products = productDBPresistence.getCategoryProducts(categoryID);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return products;
+       
     }
 
     @Override

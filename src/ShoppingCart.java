@@ -1,61 +1,70 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public  class ShoppingCart implements IShoppingCart {
     private int shippingFees;
     private ArrayList<ICartItem> items;
 
+    public ShoppingCart() {
+        items = new ArrayList<ICartItem>();
+    }
+
     @Override
     public void AddItem(Product item , int Quantity) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'AddItem'");
+        ICartItem cartItem = new CartItem(item, Quantity);
+        items.add(cartItem);
     }
 
     @Override
     public void RemoveItem(ICartItem item) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'RemoveItem'");
+        items.remove(item);
     }
 
     @Override
-    public void UpdateItem(int ProductID, int Quantity) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'UpdateItem'");
+    public void UpdateItem(ICartItem item, int Quantity) {
+        item.setQuantity(Quantity);
     }
 
     @Override
     public ArrayList<ICartItem> getItems() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getItems'");
+        return items;
     }
 
     @Override
     public ICartItem getItem(int ProductID) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getItem'");
+        for (ICartItem item : items) {
+            if (item.getProduct().getId() == ProductID) {
+                return item;
+            }
+        }
+        return null;
     }
 
     @Override
     public int countItems() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'countItems'");
+        return items.size();
     }
 
     @Override
     public int calcTotal() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'calcTotal'");
+        int total = 0;
+        for (ICartItem item : items) {
+            total += item.getTotalPrice();
+        }
+        return total;
     }
 
     @Override
     public void clearCart() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'clearCart'");
+        items.clear();
     }
 
     @Override
     public Order placeOrder() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'placeOrder'");
+        Random rand = new Random();
+        int id = rand.nextInt(1000);
+        Order order = new Order(id, calcTotal(), items);
+        return order;
     }
 
     @Override

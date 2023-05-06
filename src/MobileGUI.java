@@ -8,8 +8,9 @@ public class MobileGUI {
 
 
     public MobileGUI(ICategoryView categoryView, IShoppingCart shoppingCart) {
-        isLoggedIn = false;
+        isLoggedIn = true;
         this.categoryView = categoryView;
+        this.shoppingCart = shoppingCart;
     }
 
     public void runner() {
@@ -121,7 +122,13 @@ public class MobileGUI {
         if (choice == 0) {
             viewCategoryItems(product.getCategoryID());
         } else {
-            addItemsToCart(product);
+            if (isLoggedIn) {
+                addItemsToCart(product);
+            } else {
+                System.out.println("Please login first!");
+                login();
+            }
+       
         }
 
     }
@@ -142,10 +149,17 @@ public class MobileGUI {
     }
     public void viewShoppingCart() {
         ArrayList<ICartItem> cartItems= shoppingCart.getItems();
+        if (cartItems.isEmpty()) {
+            System.out.println("Your cart is empty!");
+            runner();
+        }
+            
+        
         System.out.println("Please Choose Item:");
         for (int i = 0; i < cartItems.size(); i++) {
             System.out.println(i+1 + " - Name: " + cartItems.get(i).getProduct().getName() + "   Quantity: " + cartItems.get(i).getQuantity()+ "   Price: " + cartItems.get(i).getUnitPrice()+ "   Total Price: " + cartItems.get(i).getTotalPrice()) ;
         }
+        System.out.println("--------------------------------");
         System.out.println("1- Remove Item");
         System.out.println("2- Checkout");
         System.out.println("0- Back");

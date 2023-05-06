@@ -2,7 +2,7 @@ public class Product {
     private int id;
     private String name;
     private String brand;
-    private int price;
+    private double price;
     private String image;
     private String description;
     private int avaliablequantity;
@@ -24,7 +24,7 @@ public class Product {
     public void setPrice(int price){
         this.price = price;
     }
-    public int getPrice(){
+    public double getPrice(){
         return price;
     }
     public void setBrand(String brand){
@@ -64,8 +64,18 @@ public class Product {
         return categoryID;
     }
     
-    Product(int id, String name, String brand, int price, String image, String desc, int avaliablequantity, Category category){
-
+    public Product(int id, String name, String brand, double price, String image, String desc, int avaliablequantity, int category_id, int loyaltyPoints){
+        this.id = id;
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.image = image;
+        this.description = desc;
+        this.avaliablequantity = avaliablequantity;
+        this.categoryID = category_id;
+        this.loyaltyPoints = loyaltyPoints;
     }
+
+    
     
 }

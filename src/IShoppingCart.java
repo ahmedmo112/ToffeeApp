@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public interface IShoppingCart {
     void AddItem(Product item , int Quantity);
     void RemoveItem(ICartItem item);
-    void UpdateItem(int ProductID, int Quantity);
+    void UpdateItem(ICartItem item, int Quantity);
     ArrayList<ICartItem> getItems();
     ICartItem getItem(int ProductID);
     int countItems();
