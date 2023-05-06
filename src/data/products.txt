@@ -1,4 +1,4 @@
-1,lotus,8,4,Friday,img,icecream gamed,5,10
-2,oreo,5,4,Friday,img,icecream nos gamed,10,5
+1,lotus,8.0,4,Friday,img,icecream gamed,3,10
+2,oreo,5.0,4,Friday,img,icecream nos gamed,10,5
 3,toffeto,2.5,1,ToffeeBrand,img,toffee toffee toffee toffee,20,4
-4,jellyCola,4,3,CocaCola,img,Cocala jelly is jellyCola,12,4
+4,jellyCola,4.0,3,CocaCola,img,Cocala jelly is jellyCola,12,4
