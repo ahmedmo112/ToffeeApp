@@ -9,7 +9,7 @@ public interface IShoppingCart {
     int countItems();
     int calcTotal();
     void clearCart();
-    Order placeOrder( );
+    Order placeOrder(int userId);
     void setShippingFees(int shippingFees);
     int getShippingFees();
     

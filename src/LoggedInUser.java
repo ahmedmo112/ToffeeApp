@@ -1,4 +1,4 @@
-public class LoggedInUser {
+public class LoggedInUser implements IUser {
     private int phoneNumber;
     private String name;
     private String Email;

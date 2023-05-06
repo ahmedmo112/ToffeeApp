@@ -1,13 +1,13 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        MobileGUI gui = new MobileGUI(new CategoryView(),new ShoppingCart());
+        MobileGUI gui = new MobileGUI(new CategoryView(),new ShoppingCart(),new LoggedInUser());
         gui.runner();
     }
 }
 
-// gui
-// user
+
+
+// order data 
+// payment
 // auth
-// category
-// cart
-// order
+//! validate phone number

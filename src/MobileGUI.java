@@ -4,13 +4,15 @@ import java.util.Scanner;
 public class MobileGUI {
     private ICategoryView categoryView;
     private IShoppingCart shoppingCart;
+    private IUser user;
     private boolean isLoggedIn;
 
 
-    public MobileGUI(ICategoryView categoryView, IShoppingCart shoppingCart) {
+    public MobileGUI(ICategoryView categoryView, IShoppingCart shoppingCart, IUser user) {
         isLoggedIn = true;
         this.categoryView = categoryView;
         this.shoppingCart = shoppingCart;
+        this.user = user;
     }
 
     public void runner() {
@@ -195,7 +197,7 @@ public class MobileGUI {
         int choice =  Integer.parseInt(scanner.nextLine());
         switch (choice) {
             case 1:
-                  Order order = shoppingCart.placeOrder();
+                  Order order = shoppingCart.placeOrder(user.getID());
                 payOrder(order);
                 break;
             case 0:
@@ -212,7 +214,7 @@ public class MobileGUI {
     public void viewOrderHistory() {
         // TODO implement here
     }
-    public void payOrder(Order order) {
+    public void payOrder(Order order) { 
         System.out.println("Please Enter Shipped Address: ");
         Scanner scanner = new Scanner(System.in);
         String address =  scanner.nextLine();

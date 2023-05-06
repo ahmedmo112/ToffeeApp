@@ -60,10 +60,10 @@ public  class ShoppingCart implements IShoppingCart {
     }
 
     @Override
-    public Order placeOrder() {
+    public Order placeOrder(int userId) {
         Random rand = new Random();
         int id = rand.nextInt(1000);
-        Order order = new Order(id, calcTotal(), items);
+        Order order = new Order(id,userId,calcTotal(), items);
         return order;
     }
 
