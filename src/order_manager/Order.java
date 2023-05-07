@@ -9,7 +9,7 @@ import shopping_cart_manager.ICartItem;
 public class Order {
     private int id;
     private int userId;
-    private String shippedAdress;
+    private String shippedAddress;
     private double totalPrice;
     private IPayment payment;
     private OrderStatus status;
@@ -23,10 +23,10 @@ public class Order {
         this.userId = userId;
     }
 
-    public Order(int id,int userId ,String shippedAdress , double totalPrice, int transactionId, String paymentMethod, OrderStatus status, String date, ArrayList<ICartItem> items) {
+    public Order(int id,int userId ,String shippedAddress , double totalPrice, int transactionId, String paymentMethod, OrderStatus status, String date, ArrayList<ICartItem> items) {
         this.id = id;
         this.userId = userId;
-        this.shippedAdress = shippedAdress;
+        this.shippedAddress = shippedAddress;
         this.totalPrice = (int)totalPrice;
         
         if(paymentMethod.equals("CashOnDelivery")){
@@ -45,10 +45,6 @@ public class Order {
         this.payment = payment;
     }
 
-    public void processPayment() {
-        this.payment.processPayment();
-    }
-
     public int getId() {
         return this.id;
     }
@@ -62,11 +58,11 @@ public class Order {
     }
 
     public String getShippedAdress() {
-        return this.shippedAdress;
+        return this.shippedAddress;
     }
 
-    public void setShippedAdress(String shippedAdress) {
-        this.shippedAdress = shippedAdress;
+    public void setShippedAdress(String shippedAddress) {
+        this.shippedAddress = shippedAddress;
     }
 
     public double getTotalPrice() {

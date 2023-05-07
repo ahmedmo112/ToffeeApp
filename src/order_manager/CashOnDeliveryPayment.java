@@ -7,7 +7,6 @@ public class CashOnDeliveryPayment extends Payment{
     }
     public CashOnDeliveryPayment(double amount, String paymentMethod,String date, int transactionId) {
         super(amount, paymentMethod, date, transactionId);
-        this.phoneNumber = phoneNumber;
     }
 
 

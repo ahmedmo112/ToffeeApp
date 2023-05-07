@@ -382,11 +382,11 @@ public class MobileGUI {
             }
         }
         
-        public void register() {
-            // TODO implement here
-        }
-        public void login() {
+    public void register() {
         // TODO implement here
+    }
+    public void login() {
+    // TODO implement here
     }
     public void logout() {
         // TODO implement here
