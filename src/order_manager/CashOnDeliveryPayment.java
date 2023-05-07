@@ -1,4 +1,8 @@
 package order_manager;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class CashOnDeliveryPayment extends Payment{
     private String phoneNumber;
     
@@ -21,11 +25,10 @@ public class CashOnDeliveryPayment extends Payment{
     }
 
     public boolean validatePhoneNumber(String phoneNumber) {
-        if (phoneNumber.length() != 11 || !phoneNumber.startsWith("01")) {
-            return false;
-        }
-        this.phoneNumber = phoneNumber;
-        return true;
+        String regex = "^(010|011|012|015)[0-9]{8}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(phoneNumber);
+        return matcher.matches();
     }
 
    

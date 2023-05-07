@@ -2,6 +2,7 @@ package mobile_ui;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import authentication_manager.IAuthentication;
 import category_view_manager.Category;
 import category_view_manager.ICategoryView;
 import category_view_manager.Product;
@@ -11,29 +12,31 @@ import order_manager.Order;
 import order_manager.OrderStatus;
 import shopping_cart_manager.ICartItem;
 import shopping_cart_manager.IShoppingCart;
+import shopping_cart_manager.ShoppingCart;
 import user_manager.IUser;
+import user_manager.LoggedInUser;
 
 public class MobileGUI {
     private ICategoryView categoryView;
     private IShoppingCart shoppingCart;
     private IOrderHistory orderHistory;
-    private IUser user;
-    private boolean isLoggedIn;
+    private IAuthentication authentication;
+   
 
 
-    public MobileGUI(ICategoryView categoryView, IShoppingCart shoppingCart, IUser user, IOrderHistory orderHistory) {
-        isLoggedIn = true;
+    public MobileGUI(ICategoryView categoryView, IShoppingCart shoppingCart, IOrderHistory orderHistory, IAuthentication authentication) {
+    
         this.categoryView = categoryView;
         this.shoppingCart = shoppingCart;
-        this.user = user;
         this.orderHistory = orderHistory;
+        this.authentication = authentication;
     }
 
     public void Menu() {
         
         System.out.println("Please choose one of the following options:");
         System.out.println("1- View Categories");
-        if (isLoggedIn) {
+        if (authentication.isLoggedIn()) {
             System.out.println("2- View Shopping Cart");
             System.out.println("3- View Order History");
             System.out.println("4- View Profile");
@@ -51,14 +54,14 @@ public class MobileGUI {
                 viewCategories();
                 break;
             case 2:
-                if (isLoggedIn) {
+                if (authentication.isLoggedIn()) {
                     viewShoppingCart();
                 } else {
                     register();
                 }
                 break;
             case 3:
-                if (isLoggedIn) {
+                if (authentication.isLoggedIn()) {
                     viewOrderHistory();
                 } else {
                     login();
@@ -66,14 +69,14 @@ public class MobileGUI {
                 break;
            
             case 4:
-                if (isLoggedIn) {
+                if (authentication.isLoggedIn()) {
                     viewProfile();
                 } else {
                     System.out.println("Invalid choice!");
                 }
                 break;
             case 5:
-                if (isLoggedIn) {
+                if (authentication.isLoggedIn()) {
                     logout();
                 } else {
                     System.out.println("Invalid choice!");
@@ -90,7 +93,7 @@ public class MobileGUI {
     }
 
     public void searchForItem() {
-        // TODO implement here
+
     }
     public void viewCategories() {
         ArrayList<Category> cArrayList = categoryView.viewCategories();
@@ -130,6 +133,8 @@ public class MobileGUI {
         System.out.println("Item Price: " + product.getPrice());
         System.out.println("Item Description: " + product.getDescription());
         System.out.println("Item Quantity: " + product.getAvailablieQuantity());
+        System.out.println("Item Brand: " + product.getBrand());
+        System.out.println("Item Loyalty Points: " + product.getLoyaltyPoints());
         System.out.println("1- Add to Cart");
         System.out.println("0- Back");
         System.out.println("Enter your choice: ");
@@ -225,7 +230,7 @@ public class MobileGUI {
         int choice =  Integer.parseInt(scanner.nextLine());
         switch (choice) {
             case 1:
-                  Order order = shoppingCart.placeOrder(user.getID());
+                  Order order = shoppingCart.placeOrder(authentication.getUser().getID());
                   
                 payOrder(order);
                 break;
@@ -291,6 +296,11 @@ public class MobileGUI {
                         cashOnDeliveryPayment.setPaymentMethod("CashOnDelivery");  
                         orderHistory.createOrder(order);
                         order.updateProductsQuantity();
+                        int points = 0 ;
+                        for (ICartItem cartItem : shoppingCart.getItems()) {
+                            points += cartItem.getProduct().getLoyaltyPoints();
+                        }
+                        authentication.getUser().setLoyaltyPoints(authentication.getUser().getLoyaltyPoints()+points);
                         shoppingCart.clearCart();
                         Menu();
                     }else{
@@ -318,7 +328,7 @@ public class MobileGUI {
         }
         
         public void viewOrderHistory() {
-            ArrayList<Order> orders = orderHistory.viewOrderHistory(user.getID());
+            ArrayList<Order> orders = orderHistory.viewOrderHistory(authentication.getUser().getID());
             if (orders.isEmpty()) {
                 System.out.println("You have no orders!");
                 Menu();
@@ -383,15 +393,105 @@ public class MobileGUI {
         }
         
     public void register() {
-        // TODO implement here
+        while(true){
+            System.out.println("Please Enter Your Name: ");
+            Scanner scanner = new Scanner(System.in);
+            String name =  scanner.nextLine();
+            System.out.println("Please Enter Your Email: ");
+            String email =  scanner.nextLine();
+            System.out.println("Please Enter Your Password: ");
+            String password =  scanner.nextLine();
+            System.out.println("Please Enter Your Phone Number: ");
+            String phoneNumber =  scanner.nextLine();
+            System.out.println("Please Enter Your Address: ");
+            String address =  scanner.nextLine();
+            System.out.println("Please Enter Your Country: ");
+            String country =  scanner.nextLine();
+            if(authentication.validateRegister(email, password, phoneNumber)){
+                System.out.println("We have sent you an OTP to your email: " + email+ ", Please check your email");
+                int otpSent =  authentication.sendOTP(email);
+                System.out.println("The OTP in your email is: " + otpSent );
+                System.out.println("Please Enter The OTP: ");
+                int otp =  Integer.parseInt(scanner.nextLine());
+                while(!authentication.validateOTP(otp, otpSent)){
+                    System.out.println("Invalid OTP!");
+                    System.out.println("Please Enter The OTP: ");
+                    otp = Integer.parseInt(scanner.nextLine());
+                }
+                LoggedInUser user = new LoggedInUser(name, email, password, phoneNumber, address, country);
+                authentication.register(user);
+                System.out.println("Registered Successfully!"); 
+                break;   
+            }else{
+                System.out.println("Registration Failed!");
+                System.out.println("Do you want to try again? (Y/N)");
+                String choice =  scanner.nextLine();
+                if(choice.equals("N")){
+                    break;
+                }
+            }
+            
+        }
+        
+        Menu();
     }
     public void login() {
-    // TODO implement here
+        while(true){
+            System.out.println("Please Enter Your Email: ");
+            Scanner scanner = new Scanner(System.in);
+            String email =  scanner.nextLine();
+            System.out.println("Please Enter Your Password: ");
+            String password =  scanner.nextLine();
+            if(authentication.validateLogin(email, password)){
+
+                if(authentication.login(email, password)){
+                    System.out.println("Logged in Successfully!"); 
+                    break;
+                }else{
+                    System.out.println("You are not registered!");
+                    break;
+                }
+                
+            }else{
+                System.out.println("Login Failed!");
+                System.out.println("Do you want to try again? (Y/N)");
+                String choice =  scanner.nextLine();
+                if(choice.equals("N")){
+                    break;
+                }
+            }
+            
+        }
+        
+        Menu();
     }
     public void logout() {
-        // TODO implement here
+        authentication.logout();
+        System.out.println("Logged out Successfully!");
+        Menu();
     }
     public void viewProfile() {
-        // TODO implement here
+        System.out.println("Your Profile:");
+        System.out.println("ID: " + authentication.getUser().getID());
+        System.out.println("Name: " + authentication.getUser().getName());
+        System.out.println("Email: " + authentication.getUser().getEmail());
+        System.out.println("Phone Number: " + authentication.getUser().getPhoneNumber());
+        System.out.println("Address: " + authentication.getUser().getAddress());
+        System.out.println("Country: " + authentication.getUser().getCountry());
+        System.out.println("Loyalty Points : " + authentication.getUser().getLoyaltyPoints());
+        System.out.println("Status: " + authentication.getUser().getStatus());
+        System.out.println("--------------------------------");
+        System.out.println("0- Back");
+        System.out.println("Enter your choice: ");
+        Scanner scanner = new Scanner(System.in);
+        int choice =  Integer.parseInt(scanner.nextLine());
+        switch (choice) {
+            case 0:
+                Menu();
+                break;
+            default:
+                System.out.println("Invalid choice!");
+                break;
+        }
     }
 }

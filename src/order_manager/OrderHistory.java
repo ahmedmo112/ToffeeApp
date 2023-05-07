@@ -18,6 +18,21 @@ public class OrderHistory implements IOrderHistory {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        try {
+            new java.util.Timer().schedule( 
+        new java.util.TimerTask() {
+            @Override
+            public void run() {
+                order.setStatus(OrderStatus.DELIVERED);
+                orderDBPresistence.updateOrderStatus(order);
+            }
+        }, 
+        20000 
+        );
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
   
@@ -38,7 +53,7 @@ public class OrderHistory implements IOrderHistory {
             } 
         }
         if (outOfStock > 0) {
-            System.out.println("Sorry, "+ outOfStock + "items are out of stock");
+            System.out.println("Sorry, "+ outOfStock + " item(s) are out of stock");
         
         }
         return items;

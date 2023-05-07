@@ -1,3 +1,3 @@
-1,Toffee
-3,jelly
-4,Icecream
+1,Chocolates
+2,Gummies
+3,Hard Candies

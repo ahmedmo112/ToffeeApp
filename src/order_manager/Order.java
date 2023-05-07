@@ -27,7 +27,7 @@ public class Order {
         this.id = id;
         this.userId = userId;
         this.shippedAddress = shippedAddress;
-        this.totalPrice = (int)totalPrice;
+        this.totalPrice = totalPrice;
         
         if(paymentMethod.equals("CashOnDelivery")){
             this.payment = new CashOnDeliveryPayment(totalPrice, paymentMethod, date, transactionId);

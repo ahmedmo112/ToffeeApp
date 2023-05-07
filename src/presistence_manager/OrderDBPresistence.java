@@ -96,5 +96,21 @@ public class OrderDBPresistence {
     }
    }
 
+public void updateOrderStatus(Order order) {
+    ArrayList<Order> orderList;
+    try {
+        orderList = readOrderDataFromFile();
+        for (int i = 0; i < orderList.size(); i++) {
+            if (orderList.get(i).getId() == order.getId()) {
+                orderList.set(i, order);
+            }
+        }
+        writeOrderDataToFile(orderList);
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}
+
 
 }
