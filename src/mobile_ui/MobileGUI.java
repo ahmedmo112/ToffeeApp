@@ -196,7 +196,11 @@ public class MobileGUI {
                 int itemNumber2 =  Integer.parseInt(scanner.nextLine());
                 System.out.println("Enter Quantity: ");
                 int quantity =  Integer.parseInt(scanner.nextLine());
-                shoppingCart.UpdateItem(cartItems.get(itemNumber2-1), quantity);
+                if(quantity > cartItems.get(itemNumber2-1).getProduct().getAvailablieQuantity() ){
+                    System.out.println("Invalid Quantity!");
+                }else{
+                    shoppingCart.UpdateItem(cartItems.get(itemNumber2-1), quantity);
+                }
                 System.out.println("Item updated successfully!");
                 viewShoppingCart();
                 break;

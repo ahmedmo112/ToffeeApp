@@ -89,8 +89,8 @@ public  class ShoppingCart implements IShoppingCart {
     }
 
     @Override
-    public int calcTotal() {
-        int total = 0;
+    public double calcTotal() {
+        double total = 0;
         for (ICartItem item : items) {
             total += item.getTotalPrice();
         }

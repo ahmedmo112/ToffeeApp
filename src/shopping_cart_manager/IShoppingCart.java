@@ -12,7 +12,7 @@ public interface IShoppingCart {
     ICartItem getItem(int ProductID);
     void setItems(ArrayList<ICartItem> items);
     int countItems();
-    int calcTotal();
+    double calcTotal();
     void clearCart();
     Order placeOrder(int userId);
     void setShippingFees(int shippingFees);
