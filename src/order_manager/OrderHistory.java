@@ -2,9 +2,9 @@ package order_manager;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import category_view_manager.Product;
+
 import presistence_manager.OrderDBPresistence;
-import presistence_manager.ProductDBPresistence;
+
 import shopping_cart_manager.ICartItem;
 
 public class OrderHistory implements IOrderHistory {
@@ -30,7 +30,7 @@ public class OrderHistory implements IOrderHistory {
         20000 
         );
         } catch (Exception e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
         }
     }
