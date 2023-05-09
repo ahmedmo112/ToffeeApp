@@ -1,6 +1,5 @@
 package category_view_manager;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import presistence_manager.CategoryDBPersistence;
@@ -28,7 +27,7 @@ public class CategoryView implements ICategoryView{
         try {
             products = productDBPresistence.getCategoryProducts(categoryID);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+           
             e.printStackTrace();
         }
         return products;
@@ -36,7 +35,7 @@ public class CategoryView implements ICategoryView{
 
     @Override
     public void addCategory(int id, String name) {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'AddCategory'");
     }
 
