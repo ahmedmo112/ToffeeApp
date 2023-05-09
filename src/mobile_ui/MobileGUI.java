@@ -356,7 +356,6 @@ public class MobileGUI {
                     System.out.println("Invalid choice!");
                     break;
             }
-            
         }
 
         public void viewOrderDetails(Order order){
