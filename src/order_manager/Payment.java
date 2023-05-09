@@ -14,10 +14,10 @@ public class Payment implements IPayment {
 
     }
 
-    public Payment(double amount, String paymentMethod,String data, int transactionId) {
+    public Payment(double amount, String paymentMethod,String date, int transactionId) {
         this.amount = amount;
         this.paymentMethod = paymentMethod;
-        this.date = data;
+        this.date = date;
         this.transactionId = transactionId;
     }
 
@@ -31,13 +31,13 @@ public class Payment implements IPayment {
     }
 
     @Override
-    public double getAmount() {
-        return amount;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     @Override
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public double getAmount() {
+        return amount;
     }
 
     @Override
@@ -50,12 +50,12 @@ public class Payment implements IPayment {
         return date;
     }
 
+    public void setPaymentMethod(String paymentMethod){
+        this.paymentMethod = paymentMethod;
+    }
+
     public String getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(String paymentMethod){
-        this.paymentMethod = paymentMethod;
-    }
-    
 }

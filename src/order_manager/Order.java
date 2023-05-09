@@ -7,7 +7,7 @@ import presistence_manager.ProductDBPresistence;
 import shopping_cart_manager.ICartItem;
 
 public class Order {
-    private int id;
+    private int orderId;
     private int userId;
     private String shippedAddress;
     private double totalPrice;
@@ -16,15 +16,15 @@ public class Order {
     
     private ArrayList<ICartItem> items;
 
-    public Order(int id,int userId ,double totalPrice, ArrayList<ICartItem> items) {
-        this.id = id;
+    public Order(int orderId,int userId ,double totalPrice, ArrayList<ICartItem> items) {
+        this.orderId = orderId;
         this.totalPrice = totalPrice;
         this.items = items;
         this.userId = userId;
     }
 
-    public Order(int id,int userId ,String shippedAddress , double totalPrice, int transactionId, String paymentMethod, OrderStatus status, String date, ArrayList<ICartItem> items) {
-        this.id = id;
+    public Order(int orderId,int userId ,String shippedAddress , double totalPrice, int transactionId, String paymentMethod, OrderStatus status, String date, ArrayList<ICartItem> items) {
+        this.orderId = orderId;
         this.userId = userId;
         this.shippedAddress = shippedAddress;
         this.totalPrice = totalPrice;
@@ -41,36 +41,43 @@ public class Order {
         this.status = status;
     }
 
-    public void setPayment(IPayment payment) {
+    public boolean payOrder(IPayment payment){
         this.payment = payment;
+        this.payment.processPayment();
+        // save order in database
+        return true;
     }
 
-    public int getId() {
-        return this.id;
+    public void setorderId(int orderId) {
+        this.orderId = orderId;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public IPayment getPayment() {
-        return this.payment;
-    }
-
-    public String getShippedAdress() {
-        return this.shippedAddress;
+    public int getOrderId() {
+        return this.orderId;
     }
 
     public void setShippedAdress(String shippedAddress) {
         this.shippedAddress = shippedAddress;
     }
 
-    public double getTotalPrice() {
-        return this.totalPrice;
+    public String getShippedAddress() {
+        return this.shippedAddress;
+    }
+
+    public void setPayment(IPayment payment) {
+        this.payment = payment;
+    }
+
+    public IPayment getPayment() {
+        return this.payment;
     }
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public double getTotalPrice() {
+        return this.totalPrice;
     }
 
     public void setStatus(OrderStatus status) {
@@ -81,11 +88,12 @@ public class Order {
         return this.status;
     }
 
-    public boolean payOrder(IPayment payment){
-        this.payment = payment;
-        this.payment.processPayment();
-        // save order in database
-        return true;
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getUserId() {
+        return this.userId;
     }
 
     public void setItems(ArrayList<ICartItem> items) {
@@ -94,14 +102,6 @@ public class Order {
 
     public ArrayList<ICartItem> getItems() {
         return this.items;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getUserId() {
-        return this.userId;
     }
 
     public void updateProductsQuantity() {

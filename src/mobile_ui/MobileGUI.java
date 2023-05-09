@@ -335,7 +335,7 @@ public class MobileGUI {
             }
             System.out.println("Please Choose Order:");
             for (int i = 0; i < orders.size(); i++) {
-                System.out.println(i+1 + " - Order ID: " + orders.get(i).getId() + "   Total Price: " + orders.get(i).getTotalPrice() + "   Status: " + orders.get(i).getStatus()) ;
+                System.out.println(i+1 + " - Order ID: " + orders.get(i).getOrderId() + "   Total Price: " + orders.get(i).getTotalPrice() + "   Status: " + orders.get(i).getStatus()) ;
             }
             System.out.println("--------------------------------");
             System.out.println("1- View Order Details");
@@ -360,11 +360,11 @@ public class MobileGUI {
         }
 
         public void viewOrderDetails(Order order){
-            System.out.println("Order ID: " + order.getId());
+            System.out.println("Order ID: " + order.getOrderId());
             System.out.println("Order Date: " + order.getPayment().getDate());
             System.out.println("Order Status: " + order.getStatus());
             System.out.println("Order Total Price: " + order.getTotalPrice());
-            System.out.println("Order Shipped Address: " + order.getShippedAdress());
+            System.out.println("Order Shipped Address: " + order.getShippedAddress());
             System.out.println("Order Payment Method: " + order.getPayment().getPaymentMethod());
             System.out.println("Order Items: ");
             for (int i = 0; i < order.getItems().size(); i++) {
