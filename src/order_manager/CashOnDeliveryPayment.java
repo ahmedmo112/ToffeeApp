@@ -17,10 +17,12 @@ public class CashOnDeliveryPayment extends Payment{
 
 
     public void setPhoneNumber(String phoneNumber) {
+
         this.phoneNumber = phoneNumber;
     }
 
     public String getPhoneNumber() {
+
         return this.phoneNumber;
     }
 

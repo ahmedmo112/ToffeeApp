@@ -79,7 +79,7 @@ public class OrderDBPresistence {
    public void writeOrderDataToFile(ArrayList<Order> orderList){
     String data = "";
     for (Order order : orderList) {
-        data += order.getId() + "," + order.getUserId() + "," + order.getShippedAdress() + "," + order.getTotalPrice() + "," + order.getPayment().getTransactionId() + "," + order.getPayment().getPaymentMethod() + "," + order.getStatus() + "," + order.getPayment().getDate();
+        data += order.getOrderId() + "," + order.getUserId() + "," + order.getShippedAddress() + "," + order.getTotalPrice() + "," + order.getPayment().getTransactionId() + "," + order.getPayment().getPaymentMethod() + "," + order.getStatus() + "," + order.getPayment().getDate();
         for (ICartItem cartItem : order.getItems()) {
             data += "," + cartItem.getProduct().getId() + "," + cartItem.getQuantity();
         }
@@ -101,7 +101,7 @@ public void updateOrderStatus(Order order) {
     try {
         orderList = readOrderDataFromFile();
         for (int i = 0; i < orderList.size(); i++) {
-            if (orderList.get(i).getId() == order.getId()) {
+            if (orderList.get(i).getOrderId() == order.getOrderId()) {
                 orderList.set(i, order);
             }
         }
