@@ -55,10 +55,16 @@ public class UserDBPresistence {
         return null;
     }
 
-    public void registerUser(IUser user) throws IOException {
+    public boolean registerUser(IUser user) throws IOException {
         ArrayList<IUser> users = readUserDataFromFile();
+        for (IUser u : users) {
+            if (u.getEmail().equals(user.getEmail())) {
+                return false;
+            }
+        }
         users.add(user);
         writeUserDataToFile(users);
+        return true;
     }
 
     public void updateUser(IUser user) throws IOException {

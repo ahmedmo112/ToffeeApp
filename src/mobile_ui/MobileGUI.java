@@ -419,8 +419,11 @@ public class MobileGUI {
                     otp = Integer.parseInt(scanner.nextLine());
                 }
                 LoggedInUser user = new LoggedInUser(name, email, password, phoneNumber, address, country);
-                authentication.register(user);
-                System.out.println("Registered Successfully!"); 
+                if(authentication.register(user)){
+                    System.out.println("Registered Successfully!"); 
+                }else{
+                    System.out.println("Registration Failed! The user registered before");
+                }
                 break;   
             }else{
                 System.out.println("Registration Failed!");

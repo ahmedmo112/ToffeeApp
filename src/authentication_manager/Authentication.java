@@ -39,7 +39,10 @@ public class Authentication implements IAuthentication{
     public boolean register(IUser user) {
         UserDBPresistence userDBPresistence = new UserDBPresistence();
         try {
-            userDBPresistence.registerUser(user);
+            boolean data  = userDBPresistence.registerUser(user);
+            if (!data) {
+                return false;
+            }
         } catch (IOException e) {
             e.printStackTrace();
             return false; 
@@ -62,7 +65,7 @@ public class Authentication implements IAuthentication{
             System.out.println("2- Password must contain at least one lowercase Latin character [a-z].");
             System.out.println("3- Password must contain at least one uppercase Latin character [A-Z].");
             System.out.println("4- Password must contain at least one special character like ! @ # & ( ).");
-            System.out.println("5-  Password must contain a length of at least 8 characters and a maximum of 20 characters.");
+            System.out.println("5- Password must contain a length of at least 8 characters and a maximum of 20 characters.");
             return false;
         }else if (!validatePhone(phone)) {
             System.out.println("Invalid phone");
