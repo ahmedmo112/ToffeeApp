@@ -9,6 +9,11 @@ import shopping_cart_manager.ICartItem;
 
 public class OrderHistory implements IOrderHistory {
     private ArrayList<Order> orderHistory = new ArrayList<Order>();
+    
+    /** 
+     *  create order and add it to order history
+     * @param order  order to be created
+     */
     @Override
     public void createOrder(Order order) {
         orderHistory.add(order);
@@ -37,6 +42,12 @@ public class OrderHistory implements IOrderHistory {
 
   
 
+    
+    /** 
+     * reOrder items from order
+     * @param order order to be reordered
+     * @return ArrayList<ICartItem> items to be reordered
+     */
     @Override
     public ArrayList<ICartItem> reOrder(Order order) {
         ArrayList<ICartItem> items = order.getItems();
@@ -59,6 +70,12 @@ public class OrderHistory implements IOrderHistory {
         return items;
     }
 
+    
+    /** 
+     * view order history for specific user
+     * @param userID user id to view his order history
+     * @return ArrayList<Order> order history for specific user
+     */
     @Override
     public ArrayList<Order> viewOrderHistory(int userID) {
         OrderDBPresistence orderDBPresistence = new OrderDBPresistence();

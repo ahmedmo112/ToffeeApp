@@ -15,6 +15,13 @@ public class ProductDBPresistence {
         this.dataFilePath = "src\\data\\products.txt";
     }
 
+    
+    /** 
+     * get all products from file for a category
+     * @param categoryID takes category id
+     * @return ArrayList<Product> list of products
+     * @throws IOException if file not found
+     */
     public ArrayList<Product> getCategoryProducts(int categoryID) throws IOException {
         ArrayList<Product> productList = readProductDataFromFile();
         ArrayList<Product> categoryProducts = new ArrayList<>();
@@ -28,6 +35,13 @@ public class ProductDBPresistence {
         return categoryProducts;
     }
 
+    
+    /**
+     * get product by id 
+     * @param productId takes product id
+     * @return Product product
+     * @throws IOException if file not found
+     */
     public Product getProduct(int productId) throws IOException {
         ArrayList<Product> productList = readProductDataFromFile();
 
@@ -40,6 +54,12 @@ public class ProductDBPresistence {
         return null;
     }
 
+    
+    /** 
+     * read product data from file
+     * @return ArrayList<Product> list of products
+     * @throws IOException if file not found
+     */
     public ArrayList<Product> readProductDataFromFile() throws IOException {
         ArrayList<Product> productList = new ArrayList<>();
 

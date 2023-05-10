@@ -17,6 +17,12 @@ public class UserDBPresistence {
         this.dataFilePath = "src\\data\\users.txt";
     }
 
+   
+   /** 
+    * read user data from file
+    * @return ArrayList<IUser> list of users
+    * @throws IOException if file not found
+    */
    public ArrayList<IUser> readUserDataFromFile() throws IOException {
         ArrayList<IUser> users = new ArrayList<>();
 
@@ -43,6 +49,14 @@ public class UserDBPresistence {
         return users;
     }
 
+    
+    /** 
+     * get user by email and password
+     * @param email email that user used to login
+     * @param password password that user used to login
+     * @return IUser user that logged in
+     * @throws IOException if file not found
+     */
     public IUser getUser(String email , String password) throws IOException {
         ArrayList<IUser> users = readUserDataFromFile();
 
@@ -55,6 +69,13 @@ public class UserDBPresistence {
         return null;
     }
 
+    
+    /** 
+     *  register user
+     * @param user user that want to register
+     * @return boolean true if user registered successfully, false if user already registered
+     * @throws IOException if file not found
+     */
     public boolean registerUser(IUser user) throws IOException {
         ArrayList<IUser> users = readUserDataFromFile();
         for (IUser u : users) {
@@ -67,6 +88,12 @@ public class UserDBPresistence {
         return true;
     }
 
+    
+    /** 
+     * update user
+     * @param user user that want to update
+     * @throws IOException if file not found
+     */
     public void updateUser(IUser user) throws IOException {
         ArrayList<IUser> users = readUserDataFromFile();
 
@@ -80,6 +107,12 @@ public class UserDBPresistence {
         writeUserDataToFile(users);
     }
 
+    
+    /** 
+     * write user data to file
+     * @param users list of users
+     * @throws IOException if file not found
+     */
     private void writeUserDataToFile(ArrayList<IUser> users) throws IOException {
         FileWriter writer = new FileWriter(dataFilePath);
 

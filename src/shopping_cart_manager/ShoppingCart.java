@@ -16,6 +16,12 @@ public  class ShoppingCart implements IShoppingCart {
         items = new ArrayList<ICartItem>();
     }
 
+    
+    /** 
+     * add item to cart
+     * @param item Product to be added
+     * @param Quantity quantity of product to be added
+     */
     @Override
     public void AddItem(Product item , int Quantity) {
         ICartItem cartItem = new CartItem(item, Quantity);
@@ -28,6 +34,11 @@ public  class ShoppingCart implements IShoppingCart {
         }
     }
 
+    
+    /** 
+     * remove item from cart
+     * @param item item to be removed
+     */
     @Override
     public void RemoveItem(ICartItem item) {
         items.remove(item);
@@ -39,6 +50,12 @@ public  class ShoppingCart implements IShoppingCart {
         }
     }
 
+    
+    /** 
+     * update item quantity
+     * @param item item to be updated
+     * @param Quantity new quantity
+     */
     @Override
     public void UpdateItem(ICartItem item, int Quantity) {
         item.setQuantity(Quantity);
@@ -50,6 +67,11 @@ public  class ShoppingCart implements IShoppingCart {
         }
     }
 
+    
+    /** 
+     * get items in cart
+     * @return ArrayList<ICartItem> items in cart
+     */
     @Override
     public ArrayList<ICartItem> getItems() {
         ShoppingCartDBPresistence shoppingCartDBPresistence = new ShoppingCartDBPresistence();
@@ -61,6 +83,12 @@ public  class ShoppingCart implements IShoppingCart {
         return items;
     }
 
+    
+    /** 
+     * get item by id
+     * @param ProductID id of item
+     * @return ICartItem item
+     */
     @Override
     public ICartItem getItem(int ProductID) {
         for (ICartItem item : items) {
@@ -71,6 +99,11 @@ public  class ShoppingCart implements IShoppingCart {
         return null;
     }
 
+    
+    /** 
+     * set items in cart
+     * @param items items to be set
+     */
     @Override
     public void setItems(ArrayList<ICartItem> items) {
         this.items = items;
@@ -83,11 +116,21 @@ public  class ShoppingCart implements IShoppingCart {
 
     }
 
+    
+    /** 
+     * count items in cart
+     * @return int number of items
+     */
     @Override
     public int countItems() {
         return items.size();
     }
 
+    
+    /** 
+     * calculate total price of items in cart
+     * @return double total price
+     */
     @Override
     public double calcTotal() {
         double total = 0;
@@ -109,6 +152,12 @@ public  class ShoppingCart implements IShoppingCart {
         }
     }
 
+    
+    /** 
+     * place order
+     * @param userId id of user
+     * @return Order order
+     */
     @Override
     public Order placeOrder(int userId) {
         Random rand = new Random();
@@ -117,11 +166,21 @@ public  class ShoppingCart implements IShoppingCart {
         return order;
     }
 
+    
+    /** 
+     * set shipping fees
+     * @param shippingFees fees to be set
+     */
     @Override
     public void setShippingFees(int shippingFees) {
         this.shippingFees = shippingFees;
     }
 
+    
+    /** 
+     * get shipping fees
+     * @return int shipping fees
+     */
     @Override
     public int getShippingFees() {
       return shippingFees;

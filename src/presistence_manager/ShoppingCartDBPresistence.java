@@ -17,6 +17,12 @@ public class ShoppingCartDBPresistence {
         this.dataFilePath = "src\\data\\shoppingcart.txt";
     }
 
+    
+    /** 
+     * get all products from shopping cart
+     * @return ArrayList<ICartItem> list of products
+     * @throws IOException if file not found
+     */
     public ArrayList<ICartItem> getShoppingCartProducts() throws IOException {
         ArrayList<ICartItem> cartItems = readProductDataFromFile();
 
@@ -24,6 +30,12 @@ public class ShoppingCartDBPresistence {
     }
 
 
+    
+    /** 
+     * read product data from file
+     * @return ArrayList<ICartItem> list of products
+     * @throws IOException if file not found
+     */
     private ArrayList<ICartItem> readProductDataFromFile() throws IOException {
         ArrayList<ICartItem> cartItemList = new ArrayList<>();
         ProductDBPresistence productDBPresistence = new ProductDBPresistence();
@@ -46,6 +58,12 @@ public class ShoppingCartDBPresistence {
 
 
 
+    
+    /** 
+     * add product to cart
+     * @param cartItem cart item
+     * @throws IOException if file not found
+     */
     public void addProductToCart(ICartItem cartItem) throws IOException {
         ArrayList<ICartItem> cartItemList = readProductDataFromFile();
         cartItemList.add(cartItem);
@@ -54,6 +72,12 @@ public class ShoppingCartDBPresistence {
 
 
 
+    
+    /** 
+     * remove product from cart
+     * @param productId product id
+     * @throws IOException if file not found
+     */
     public void removeProductFromCart(int productId) throws IOException {
         ArrayList<ICartItem> cartItemList = readProductDataFromFile();
         for (int i = 0; i < cartItemList.size(); i++) {
@@ -65,6 +89,12 @@ public class ShoppingCartDBPresistence {
         writeProductDataToFile(cartItemList);
     }
 
+    
+    /** 
+     * update product quantity
+     * @param cartItem cart item
+     * @throws IOException if file not found
+     */
     public void updateProductQuantity(ICartItem cartItem) throws IOException {
         ArrayList<ICartItem> cartItemList = readProductDataFromFile();
         for (int i = 0; i < cartItemList.size(); i++) {
@@ -76,11 +106,22 @@ public class ShoppingCartDBPresistence {
         writeProductDataToFile(cartItemList);
     }
 
+    
+    /** 
+     * clear cart
+     * @throws IOException if file not found
+     */
     public void clearCart() throws IOException {
         ArrayList<ICartItem> cartItemList = new ArrayList<>();
         writeProductDataToFile(cartItemList);
     }
 
+    
+    /** 
+     * write product data to file
+     * @param cartItemList list of products
+     * @throws IOException if file not found
+     */
     public void writeProductDataToFile(ArrayList<ICartItem> cartItemList) throws IOException {
         String data = "";
         for (ICartItem cartItem : cartItemList) {

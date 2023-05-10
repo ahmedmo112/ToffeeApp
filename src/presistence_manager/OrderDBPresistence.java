@@ -20,6 +20,13 @@ public class OrderDBPresistence {
         this.dataFilePath = "src\\data\\order.txt";
     }
 
+    
+    /** 
+     * get all orders
+     * @param userId user id
+     * @return ArrayList<Order> order list
+     * @throws IOException  IO exception
+     */
     public ArrayList<Order> getOrdersHistory(int userId) throws IOException {
         ArrayList<Order> orderList = readOrderDataFromFile();
         ArrayList<Order> userOrderList = new ArrayList<>();
@@ -32,6 +39,12 @@ public class OrderDBPresistence {
     }
 
 
+    
+    /** 
+     * read order data from file
+     * @return ArrayList<Order> return order list
+     * @throws IOException if file not found
+     */
     private ArrayList<Order> readOrderDataFromFile() throws IOException {
         ArrayList<Order> orders = new ArrayList<>();
         ProductDBPresistence productDBPresistence = new ProductDBPresistence();
@@ -68,6 +81,12 @@ public class OrderDBPresistence {
         return orders;
     }
 
+    
+    /** 
+     * add order
+     * @param order order to add
+     * @throws IOException if file not found
+     */
     public void addOrder(Order order) throws IOException {
         ArrayList<Order> orderList = readOrderDataFromFile();
       
@@ -76,6 +95,11 @@ public class OrderDBPresistence {
     }
 
 
+   
+   /** 
+    * write order data to file
+    * @param orderList take order list to write
+    */
    public void writeOrderDataToFile(ArrayList<Order> orderList){
     String data = "";
     for (Order order : orderList) {
@@ -96,6 +120,11 @@ public class OrderDBPresistence {
     }
    }
 
+
+/** 
+ * update order status
+ * @param order order to update
+ */
 public void updateOrderStatus(Order order) {
     ArrayList<Order> orderList;
     try {

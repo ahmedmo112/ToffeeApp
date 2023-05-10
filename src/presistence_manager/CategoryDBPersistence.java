@@ -14,6 +14,12 @@ public class CategoryDBPersistence {
         this.dataFilePath = "src\\data\\categories.txt";
     }
 
+    
+    /** 
+     * get all categories
+     * @return ArrayList<Category> list of categories
+     * @throws IOException if file not found
+     */
     public ArrayList<Category> getAllCategories() throws IOException {
         ArrayList<Category> categoryList = readCategoryDataFromFile();
 
@@ -22,6 +28,12 @@ public class CategoryDBPersistence {
 
    
 
+    
+    /** 
+     * read category data from file
+     * @return ArrayList<Category> list of categories
+     * @throws IOException if file not found
+     */
     private ArrayList<Category> readCategoryDataFromFile() throws IOException {
         ArrayList<Category> categories = new ArrayList<>();
 

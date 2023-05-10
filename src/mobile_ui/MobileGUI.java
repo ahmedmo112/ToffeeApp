@@ -112,6 +112,10 @@ public class MobileGUI {
         }  
     }
 
+    
+    /** 
+     * @param categoryID
+     */
     public void viewCategoryItems(int categoryID) {
         ArrayList<Product> pArrayList = categoryView.viewCategoryItems(categoryID);
         System.out.println("Please Choose Item:");
@@ -128,6 +132,10 @@ public class MobileGUI {
             viewItem(pArrayList.get(choice-1));
         }
     }
+    
+    /** 
+     * @param product
+     */
     public void viewItem(Product product) {
         System.out.println("Item Name: " + product.getName());
         System.out.println("Item Price: " + product.getPrice());
@@ -155,6 +163,10 @@ public class MobileGUI {
     }
 
 
+    
+    /** 
+     * @param product
+     */
     public void addItemsToCart(Product product) {
         System.out.println("Enter Quantity: ");
         Scanner scanner = new Scanner(System.in);
@@ -245,6 +257,10 @@ public class MobileGUI {
 
     
 
+    
+    /** 
+     * @param order
+     */
     public void payOrder(Order order) { 
         System.out.println("Please Enter Shipped Address: ");
         Scanner scanner = new Scanner(System.in);
@@ -358,6 +374,10 @@ public class MobileGUI {
             }
         }
 
+        
+        /** 
+         * @param order
+         */
         public void viewOrderDetails(Order order){
             System.out.println("Order ID: " + order.getOrderId());
             System.out.println("Order Date: " + order.getPayment().getDate());

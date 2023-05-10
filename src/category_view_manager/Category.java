@@ -12,25 +12,42 @@ public class Category {
     }
 
 
+    
+    /** 
+     * set  id
+     * 
+     * @param id  the id of the category
+     */
     public void setId(int id){
         this.id = id;
     }
+    
+    /** 
+     *  get id
+     * 
+     * @return int the id of the category
+     */
     public int getId(){
         return id;
     }
+    
+    /** 
+     * set the category name
+     * 
+     * @param name the name of the category
+     */
     public void setName(String name){
         this.name = name;
     }
+    
+    /** 
+     * get the category name
+     * 
+     * @return String the name of the category
+     */
     public String getName(){
         return name;
     }
-    public void AddItem(int id, String name, String brand, int price, String image, String desc, int avaliablequantity){
-
-    }
-    public void RemoveItem(Product product){
-
-    }
-    public void UpdateItem(Product product){
-
-    }
+    
+    
 }
