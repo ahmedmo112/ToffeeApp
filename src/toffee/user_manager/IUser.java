@@ -1,4 +1,4 @@
-package user_manager;
+package toffee.user_manager;
 public interface IUser {
    public void setPhoneNumber(String phoneNumber);
    public String getPhoneNumber();

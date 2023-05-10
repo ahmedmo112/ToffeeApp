@@ -1,4 +1,4 @@
-package category_view_manager;
+package toffee.category_view_manager;
 import java.util.ArrayList;
 
 public interface ICategoryView {

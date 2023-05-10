@@ -1,4 +1,4 @@
-package presistence_manager;
+package toffee.presistence_manager;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,9 +6,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import category_view_manager.Product;
-import shopping_cart_manager.CartItem;
-import shopping_cart_manager.ICartItem;
+import toffee.category_view_manager.Product;
+import toffee.shopping_cart_manager.CartItem;
+import toffee.shopping_cart_manager.ICartItem;
 
 public class ShoppingCartDBPresistence {
     private String dataFilePath;

@@ -1,13 +1,13 @@
-package authentication_manager;
+package toffee.authentication_manager;
 
 import java.io.IOException;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import presistence_manager.UserDBPresistence;
-import user_manager.IUser;
-import user_manager.LoggedInUser;
+import toffee.presistence_manager.UserDBPresistence;
+import toffee.user_manager.IUser;
+import toffee.user_manager.LoggedInUser;
 
 public class Authentication implements IAuthentication{
     private boolean isLoggedIn;

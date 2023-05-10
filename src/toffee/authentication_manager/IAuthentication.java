@@ -1,6 +1,6 @@
-package authentication_manager;
+package toffee.authentication_manager;
 
-import user_manager.IUser;
+import toffee.user_manager.IUser;
 
 public interface IAuthentication {
     public boolean login(String email, String password);

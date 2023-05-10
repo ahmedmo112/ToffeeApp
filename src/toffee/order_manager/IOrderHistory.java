@@ -1,7 +1,7 @@
-package order_manager;
+package toffee.order_manager;
 import java.util.ArrayList;
 
-import shopping_cart_manager.ICartItem;
+import toffee.shopping_cart_manager.ICartItem;
 
 public interface IOrderHistory {
     void createOrder(Order order);

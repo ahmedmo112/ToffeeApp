@@ -1,8 +1,8 @@
-import authentication_manager.Authentication;
-import category_view_manager.CategoryView;
-import mobile_ui.MobileGUI;
-import order_manager.OrderHistory;
-import shopping_cart_manager.ShoppingCart;
+import toffee.authentication_manager.Authentication;
+import toffee.category_view_manager.CategoryView;
+import toffee.mobile_ui.MobileGUI;
+import toffee.order_manager.OrderHistory;
+import toffee.shopping_cart_manager.ShoppingCart;
 
 
 public class App {

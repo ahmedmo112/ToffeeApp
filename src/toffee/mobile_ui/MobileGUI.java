@@ -1,20 +1,20 @@
-package mobile_ui;
+package toffee.mobile_ui;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import authentication_manager.IAuthentication;
-import category_view_manager.Category;
-import category_view_manager.ICategoryView;
-import category_view_manager.Product;
-import order_manager.CashOnDeliveryPayment;
-import order_manager.IOrderHistory;
-import order_manager.Order;
-import order_manager.OrderStatus;
-import shopping_cart_manager.ICartItem;
-import shopping_cart_manager.IShoppingCart;
-import shopping_cart_manager.ShoppingCart;
-import user_manager.IUser;
-import user_manager.LoggedInUser;
+import toffee.authentication_manager.IAuthentication;
+import toffee.category_view_manager.Category;
+import toffee.category_view_manager.ICategoryView;
+import toffee.category_view_manager.Product;
+import toffee.order_manager.CashOnDeliveryPayment;
+import toffee.order_manager.IOrderHistory;
+import toffee.order_manager.Order;
+import toffee.order_manager.OrderStatus;
+import toffee.shopping_cart_manager.ICartItem;
+import toffee.shopping_cart_manager.IShoppingCart;
+import toffee.shopping_cart_manager.ShoppingCart;
+import toffee.user_manager.IUser;
+import toffee.user_manager.LoggedInUser;
 
 public class MobileGUI {
     private ICategoryView categoryView;

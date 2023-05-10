@@ -1,9 +1,9 @@
-package category_view_manager;
+package toffee.category_view_manager;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import presistence_manager.CategoryDBPersistence;
-import presistence_manager.ProductDBPresistence;
+import toffee.presistence_manager.CategoryDBPersistence;
+import toffee.presistence_manager.ProductDBPresistence;
 
 public class CategoryView implements ICategoryView{
     ArrayList<Category> categories;

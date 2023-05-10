@@ -1,5 +1,5 @@
-package shopping_cart_manager;
-import category_view_manager.Product;
+package toffee.shopping_cart_manager;
+import toffee.category_view_manager.Product;
 
 public class CartItem implements ICartItem {
 

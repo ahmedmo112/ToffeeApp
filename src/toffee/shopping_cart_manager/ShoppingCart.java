@@ -1,11 +1,11 @@
-package shopping_cart_manager;
+package toffee.shopping_cart_manager;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import category_view_manager.Product;
-import order_manager.Order;
-import presistence_manager.ShoppingCartDBPresistence;
+import toffee.category_view_manager.Product;
+import toffee.order_manager.Order;
+import toffee.presistence_manager.ShoppingCartDBPresistence;
 
 public  class ShoppingCart implements IShoppingCart {
     private int shippingFees;

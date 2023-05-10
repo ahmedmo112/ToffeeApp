@@ -1,4 +1,4 @@
-package presistence_manager;
+package toffee.presistence_manager;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,9 +6,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import user_manager.IUser;
-import user_manager.LoggedInUser;
-import user_manager.UserStatus;
+import toffee.user_manager.IUser;
+import toffee.user_manager.LoggedInUser;
+import toffee.user_manager.UserStatus;
 
 public class UserDBPresistence {
     private String dataFilePath;

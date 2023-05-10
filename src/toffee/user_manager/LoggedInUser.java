@@ -1,9 +1,9 @@
-package user_manager;
+package toffee.user_manager;
 
 import java.io.IOException;
 import java.util.Random;
 
-import presistence_manager.UserDBPresistence;
+import toffee.presistence_manager.UserDBPresistence;
 
 public class LoggedInUser implements IUser {
     private String phoneNumber;

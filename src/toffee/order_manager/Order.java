@@ -1,10 +1,10 @@
-package order_manager;
+package toffee.order_manager;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import category_view_manager.Product;
-import presistence_manager.ProductDBPresistence;
-import shopping_cart_manager.ICartItem;
+import toffee.category_view_manager.Product;
+import toffee.presistence_manager.ProductDBPresistence;
+import toffee.shopping_cart_manager.ICartItem;
 
 public class Order {
     private int orderId;

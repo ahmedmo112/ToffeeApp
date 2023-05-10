@@ -1,4 +1,4 @@
-package user_manager;
+package toffee.user_manager;
 public enum UserStatus {
     ACTIVE,
     SUSPENDED,

@@ -1,4 +1,4 @@
-package order_manager;
+package toffee.order_manager;
 public enum OrderStatus {
     PROCESSING,
     SHIPPED,

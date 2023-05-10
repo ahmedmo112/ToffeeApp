@@ -1,8 +1,8 @@
-package shopping_cart_manager;
+package toffee.shopping_cart_manager;
 import java.util.ArrayList;
 
-import category_view_manager.Product;
-import order_manager.Order;
+import toffee.category_view_manager.Product;
+import toffee.order_manager.Order;
 
 public interface IShoppingCart {
     void AddItem(Product item , int Quantity);
