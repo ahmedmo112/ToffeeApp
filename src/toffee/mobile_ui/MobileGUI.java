@@ -429,7 +429,7 @@ public class MobileGUI {
             if(authentication.validateRegister(email, password, phoneNumber)){
                 System.out.println("We have sent you an OTP to your email: " + email+ ", Please check your email");
                 int otpSent =  authentication.sendOTP(email);
-                System.out.println("The OTP in your email is: " + otpSent );
+ 
                 System.out.println("Please Enter The OTP: ");
                 int otp =  Integer.parseInt(scanner.nextLine());
                 while(!authentication.validateOTP(otp, otpSent)){

@@ -1,9 +1,18 @@
 package toffee.authentication_manager;
 
 import java.io.IOException;
+import java.util.Properties;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import toffee.presistence_manager.UserDBPresistence;
 import toffee.user_manager.IUser;
@@ -233,7 +242,43 @@ public class Authentication implements IAuthentication{
     @Override
     public int sendOTP(String email) {
        Random rand = new Random();
-         int otp = rand.nextInt(10000);
+        int otp = rand.nextInt(10000);
+        String to = email;
+        String from = "amhk11827@gmail.com";
+        String host = "smtp.gmail.com";
+    
+
+        Properties properties = System.getProperties();  
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", "465");
+        properties.put("mail.smtp.ssl.enable", "true");
+        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        properties.put("mail.smtp.auth", "true");
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+
+            protected PasswordAuthentication getPasswordAuthentication() {
+
+                return new PasswordAuthentication(from, "xhiykotowtrrijyn");
+
+            }
+
+        });
+       
+        // session.setDebug(true);
+
+        try{  
+            MimeMessage message = new MimeMessage(session);  
+       
+            message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));  
+            message.setSubject("Email Verification");       
+            message.setFrom(new InternetAddress(from));  
+            message.setText("Thank you for registering with our service. To ensure the security of your account, we require you to verify your email address by entering the following OTP: "+otp+"\n\n\n Best Regards,\n Toffee team");  
+
+            Transport.send(message);  
+            System.out.println("OTP sent successfully....");  
+    
+        }catch (MessagingException mex) {mex.printStackTrace();}  
+   
          return otp;
     }
 
